@@ -1,6 +1,7 @@
 import React from 'react'
 import text from './example.json'
 
+
 const generateArray = (n) => { return Array.from({length: n}, (v, k) => k+1); }
 
 const generateRandomArray = (n) => { return Array.from({length: n}, () => Math.floor((Math.random() * 25) + 1)); }
@@ -40,7 +41,7 @@ function first(data) {
 	var result = new Array();
 	var i, j;
 	for (i = 0; i < data.length; i++) {
-		for (j = 0; j < data[i].length; j++) {
+		for (j = 0; j < data[i].students.length; j++) {
 			result.push(data[i].students[j].name);
 		}
 	}
@@ -48,6 +49,48 @@ function first(data) {
   }
 
 const TmpArray5 = makeTmpArray(first(data))
+
+const TmpArray6 = makeTmpArray(first(data).sort())
+
+function second(data) {
+	var result = new Array();
+	var i, j;
+	for (i = 0; i < data.length; i++) {
+		if (data[i].active == true) 
+			for (j = 0; j < data[i].students.length; j++) {
+				if (data[i].students[j].age > 20) 
+					result.push(data[i].students[j].name);
+			}
+	}
+	return result;
+  }
+
+  const TmpArray7 = makeTmpArray(second(data));
+
+  function event1(e) {
+		var x = document.getElementById("list1");
+		if (x.style.display === "none") {
+	 	 x.style.display = "block";
+		} else {
+	 	 x.style.display = "none";
+		}
+	}
+  function event2(e) {
+   		var x = document.getElementById("list2");
+		if (x.style.display === "none") {
+	 	 x.style.display = "block";
+		} else {
+	 	 x.style.display = "none";
+		}
+	}
+  function event3(e) {
+		var x = document.getElementById("list3");
+		if (x.style.display === "none") {
+	 	 x.style.display = "block";
+		} else {
+	 	 x.style.display = "none";
+		}
+	}
 
 const MyApp = () => (
   <div><h1>Minimal React bartlomiej-s</h1>
@@ -61,7 +104,12 @@ const MyApp = () => (
 	<h2>Podpunkt 5</h2>
 	<p>{TmpArray4}</p>
 	<h2>Podpunkt 7</h2>
-	<p>{TmpArray5}</p>
+	<button onClick={event1}>All students</button>
+  	<button onClick={event2}>Sort students</button>
+  	<button onClick={event3}>Old students</button>
+	<p id="list1" style={{display: 'none' }}>{TmpArray5}</p>
+	<p id="list2" style={{display: 'none' }}>{TmpArray6}</p>
+	<p id="list3" style={{display: 'none' }}>{TmpArray7}</p>
   </div>
 )
 
