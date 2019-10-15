@@ -92,24 +92,41 @@ function second(data) {
 		}
 	}
 
+	function funca(e) {
+		console.log("Value changed a:" + e.target.value);
+	}
+
+	function funcb(e) {
+		console.log("Value changed b:" + e.target.value);
+	}
+
+
 const MyApp = () => (
   <div><h1>Minimal React bartlomiej-s</h1>
 	<p>Bundle size: 128.91 KB, Load time of the bundle: 75 ms, Last commit SHA1: 8e42c77a5535786cd5abd6304e194e842457e2b3</p>
-  	<h2>Podpunkt 2</h2>
+  	
+	<h2><b>Lab 1</b></h2>
+	<h3>Podpunkt 2</h3>
 	<p>{TmpArray1}</p>
-	<h2>Podpunkt 3</h2>
+	<h3>Podpunkt 3</h3>
 	<p>{TmpArray2}</p>
-	<h2>Podpunkt 4</h2>
+	<h3>Podpunkt 4</h3>
 	<p>{TmpArray3}</p>
-	<h2>Podpunkt 5</h2>
+	<h3>Podpunkt 5</h3>
 	<p>{TmpArray4}</p>
-	<h2>Podpunkt 7</h2>
+	<h3>Podpunkt 7</h3>
 	<button onClick={event1}>All students</button>
   	<button onClick={event2}>Sort students</button>
   	<button onClick={event3}>Old students</button>
 	<p id="list1" style={{display: 'none' }}>{TmpArray5}</p>
 	<p id="list2" style={{display: 'none' }}>{TmpArray6}</p>
 	<p id="list3" style={{display: 'none' }}>{TmpArray7}</p>
+
+	<h2><b>Lab 2</b></h2>
+	<h3>Exercise 1</h3>
+
+	<input type="number" name="a" onChange={funca}></input>
+	<input type="number" name="b" onChange={funcb}></input>
   </div>
 )
 
