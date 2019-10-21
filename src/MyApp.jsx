@@ -127,28 +127,42 @@ function second(data) {
 			a: 0,
 			b: 0,
 			array: [],
-			i: 1
+			i: 1,
+			array2: []
 		  };
 		  this.funca = this.funca.bind(this);
 		  this.funcb = this.funcb.bind(this)
+		  this.event = this.event.bind(this)
 		}
 
 		funca(e) {
 			console.log("Value changed a:" + e.target.value);
 			let arr = genArr(e.target.value, this.state.b);
+			//let squares = this.state.array.map(Math.sqrt);
 			this.setState({
 			  a: Number(e.target.value),
-			  array: arr
+			  array: arr,
+			  array2: [] //squares 
 			});
 		}
 
 		funcb(e) {
 			console.log("Value changed b:" + e.target.value);
 			let arr = genArr(this.state.a, e.target.value);
+			//let squares = this.state.array.map(Math.sqrt);
 			this.setState({
 			  b: Number(e.target.value),
-			  array: arr
+			  array: arr,
+			  array2: [] //squares 
 			});
+		}
+
+		event() {
+			let squares = this.state.array.map(Math.sqrt);
+			this.setState({
+				array2: squares
+			  });
+
 		}
 			
 		render() {
@@ -179,6 +193,9 @@ function second(data) {
 				<input type="number" name="b" onChange={this.funcb}></input>
 				<h3>Exercise 2</h3>
 				<p>{this.state.array.map((number) => <li>{number}</li>)}</p>
+				<h3>Exercise 4</h3>
+				<button onClick={this.event}>Process array</button>
+				<p>{this.state.array2.map((number) => <li>{number}</li>)}</p>
 			  </div>
 			);
 			console.timeEnd("render "+(iter));
