@@ -115,18 +115,22 @@ function second(data) {
 		return TmpArr;
 	}
 
+	let iter = 1;
+
 	class AB extends React.Component {
 		
 		
 		constructor() {
+		  console.time("render "+Number(1));
 		  super();
 		  this.state = {
 			a: 0,
 			b: 0,
-			array: []
+			array: [],
+			i: 1
 		  };
 		  this.funca = this.funca.bind(this);
-    	  this.funcb = this.funcb.bind(this)
+		  this.funcb = this.funcb.bind(this)
 		}
 
 		funca(e) {
@@ -148,7 +152,7 @@ function second(data) {
 		}
 			
 		render() {
-			return (
+			const res = (
 				<div><h1>Minimal React bartlomiej-s</h1>
 				<p>Bundle size: 128.91 KB, Load time of the bundle: 75 ms, Last commit SHA1: 8e42c77a5535786cd5abd6304e194e842457e2b3</p>
 				  
@@ -177,6 +181,10 @@ function second(data) {
 				<p>{this.state.array.map((number) => <li>{number}</li>)}</p>
 			  </div>
 			);
+			console.timeEnd("render "+(iter));
+			iter = iter + 1;
+			console.time("render "+(iter));
+			return res
 		}
 	}
 
